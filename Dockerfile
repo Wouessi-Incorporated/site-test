@@ -1,20 +1,17 @@
-﻿# Use a lightweight Node.js image
-FROM node:18-alpine
+﻿FROM node:18-alpine
 
-# Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if available)
+# Copy package files
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci --only=production
 
-# Copy the rest of the application code
+# Copy application files
 COPY . .
 
-# Expose the port the app runs on
 EXPOSE 8000
 
-# Command to run the application
+# Run the server
 CMD ["node", "server.js"]

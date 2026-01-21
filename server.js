@@ -1,12 +1,32 @@
-const express = require('express');
+﻿const express = require('express');
 const path = require('path');
 
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 
-// Serve static files from the current directory
+// Middleware
 app.use(express.static(path.join(__dirname)));
 
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running at http://0.0.0.0:${port}/`);
+// Fallback for SPA routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Error handling
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
+
+const server = app.listen(port, '0.0.0.0', () => {
+  console.log(Server started on 0.0.0.0:);
+  console.log(Press Ctrl+C to stop);
+});
+
+// Handle graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM signal received: closing HTTP server');
+  server.close(() => {
+    console.log('HTTP server closed');
+  });
 });
