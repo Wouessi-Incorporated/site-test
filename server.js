@@ -19,8 +19,8 @@ app.use((err, req, res, next) => {
 });
 
 const server = app.listen(port, '0.0.0.0', () => {
-  console.log(Server started on 0.0.0.0:);
-  console.log(Press Ctrl+C to stop);
+  console.log('Server started on 0.0.0.0:' + port);
+  console.log('Press Ctrl+C to stop');
 });
 
 // Handle graceful shutdown
