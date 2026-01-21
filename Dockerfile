@@ -1,11 +1,20 @@
-﻿from node:18-alpine
+﻿# Use a lightweight Node.js image
+FROM node:18-alpine
 
-workdir /app
+# Set the working directory
+WORKDIR /app
 
-copy . .
+# Copy package.json and package-lock.json (if available)
+COPY package*.json ./
 
-run npm init -y && npm install express
+# Install dependencies
+RUN npm install
 
-expose 8000
+# Copy the rest of the application code
+COPY . .
 
-cmd ["node", "-e", "const express = require('express'); const app = express(); app.use(express.static('.')); app.listen(8000, '0.0.0.0', () => console.log('Server running on 0.0.0.0:8000'));"]
+# Expose the port the app runs on
+EXPOSE 8000
+
+# Command to run the application
+CMD ["node", "server.js"]
