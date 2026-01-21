@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr"><head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ALTURA — Produit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/styles.css" />
+</head>
+<body>
+<div id="hdr"></div>
+<section class="section">
+  <div class="container">
+    <div class="grid grid-2" style="align-items:start">
+      <div class="card">
+        <img class="card-img" style="aspect-ratio:3/2" id="img" src="/assets/reference-product.png" alt="Produit" />
+        <div class="pad small muted">Editorial + details. Pas d'etirement. Ratios verrouilles.</div>
+      </div>
+      <div>
+        <div class="pill" id="type">Chaussures</div>
+        <h1 class="h1" style="font-size:44px;margin-top:10px" id="name">Produit</h1>
+        <p class="p" id="tag">Proportions tall-fit.</p>
+        <div class="price" style="font-size:22px;margin-top:10px" id="price" data-price-eur="0" data-price-usd="0">€0</div>
+
+        <div style="margin-top:16px" class="card"><div class="pad">
+          <div class="card-title">Tailles</div>
+          <div class="sizes" id="sizes"></div>
+          <div class="small" style="margin-top:10px">Besoin d'aide ? <a href="/fr/fit.html" style="text-decoration:underline">Guide Tall Fit</a>.</div>
+        </div></div>
+
+        <div style="margin-top:14px" class="notice"><strong>Confiance :</strong> Retours offerts • Paiement securise • Support WhatsApp</div>
+
+        <div class="stickybar" style="margin-top:18px">
+          <div class="container" style="padding:0">
+            <div class="sticky-inner">
+              <button class="btn btn-dark" id="add">Ajouter au panier</button>
+              <a class="btn btn-primary" href="/fr/checkout.html">Acheter maintenant</a>
+              <div class="small muted">Devise : <span data-currency-badge>EUR</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid" style="margin-top:18px">
+          <div class="card"><div class="pad">
+            <div class="card-title">Pourquoi Tall Fit</div>
+            <p class="p">Proportions plus longues : bandoulieres, anses, et formes concues pour les grands.</p>
+          </div></div>
+          <div class="card"><div class="pad">
+            <div class="card-title">Materiaux</div>
+            <p class="p">Cuir/suede premium (a finaliser avec fournisseurs). Coutures et quincaillerie choisies pour durer.</p>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="ftr"></div>
+<script src="/shared/products.js"></script>
+<script src="/shared/partials.js"></script>
+<script src="/shared/app.js"></script>
+<script>
+  document.getElementById('hdr').innerHTML = alturaHeader({langPath:'/fr'});
+  document.getElementById('ftr').innerHTML = alturaFooter('/fr');
+
+  const u = new URL(window.location.href);
+  const id = u.searchParams.get('id') || 'p1';
+  const p = (window.ALTURA_PRODUCTS||[]).find(x=>x.id===id) || window.ALTURA_PRODUCTS[0];
+
+  document.title = 'ALTURA — ' + p.name_fr;
+  document.getElementById('name').textContent = p.name_fr;
+  document.getElementById('tag').textContent = p.tag_fr + ' • ' + p.sizes_fr;
+  document.getElementById('type').textContent = p.type==='shoe' ? 'Chaussures' : 'Sacs';
+  document.getElementById('img').src = p.image;
+
+  const priceEl = document.getElementById('price');
+  priceEl.setAttribute('data-price-eur', p.price_eur);
+  priceEl.setAttribute('data-price-usd', p.price_usd);
+
+  const sizes = document.getElementById('sizes');
+  const options = (p.type==='shoe') ? (p.gender==='men' ? ['EU 43','EU 44','EU 45','EU 46','EU 47','EU 48','EU 49','EU 50'] : ['EU 41','EU 42','EU 43','EU 44','EU 45','EU 46']) : ['S','M','L'];
+  let selected = options[0];
+  options.forEach(s=>{
+    const b = document.createElement('button');
+    b.className = 'size-btn' + (s===selected?' active':'');
+    b.textContent = s;
+    b.onclick = ()=>{
+      selected = s;
+      document.querySelectorAll('.size-btn').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+    };
+    sizes.appendChild(b);
+  });
+
+  document.getElementById('add').onclick = ()=>{
+    const cur = ALTURA.detectCurrency();
+    ALTURA.addToCart({
+      id: p.id,
+      name: p.name_fr,
+      size: selected,
+      qty: 1,
+      price_eur: p.price_eur,
+      price_usd: p.price_usd,
+      currency: cur
+    });
+    alert('Ajoute au panier');
+  };
+
+  ALTURA.applyPrices();
+</script>
+</body></html>

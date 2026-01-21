@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr"><head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ALTURA — Paiement</title>
+  <meta name="description" content="Paiement securise Stripe et PayPal. Rapide, fiable." />
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/styles.css" />
+</head>
+<body>
+<div id="hdr"></div>
+<section class="section">
+  <div class="container">
+    <div class="sectionTitle">
+      <div>
+        <h1 class="h1" style="font-size:44px">Paiement</h1>
+        <p class="p">Paiement fiable. Stripe + PayPal. Sans compte.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-2" style="margin-top:18px;align-items:start">
+      <div class="card"><div class="pad">
+        <div class="card-title">Informations client</div>
+        <div class="form-row" style="margin-top:12px">
+          <input class="input" id="email" placeholder="Email" />
+          <input class="input" id="phone" placeholder="Telephone" />
+        </div>
+        <input class="input" id="addr" placeholder="Adresse" style="margin-top:12px" />
+        <div class="small" style="margin-top:10px">En payant vous acceptez nos conditions et notre politique de confidentialite.</div>
+
+        <div class="hr"></div>
+        <div class="card-title">Payer en toute securite</div>
+        <div class="grid" style="margin-top:12px">
+          <button class="btn btn-primary" id="payStripe">Payer avec Stripe</button>
+          <button class="btn btn-dark" id="payPayPal">Payer avec PayPal</button>
+        </div>
+        <div class="small" style="margin-top:10px">Checkout demo : Kevin connecte les endpoints backend Stripe/PayPal.</div>
+      </div></div>
+
+      <div>
+        <div class="card"><div class="pad">
+          <div class="card-title">Votre commande</div>
+          <div id="items" style="margin-top:10px"></div>
+          <div class="hr"></div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div class="card-title">Total</div>
+            <div class="price" id="total">€0</div>
+          </div>
+          <div class="small" style="margin-top:10px">🔒 SSL • ✅ Retours offerts • 💬 WhatsApp</div>
+        </div></div>
+
+        <div class="notice" style="margin-top:14px"><strong>Credibilite :</strong> Paiement securise • Retours clairs • Support reel • Promesse tall-fit</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="ftr"></div>
+<script src="/shared/products.js"></script>
+<script src="/shared/partials.js"></script>
+<script src="/shared/app.js"></script>
+<script>
+  document.getElementById('hdr').innerHTML = alturaHeader({langPath:'/fr'});
+  document.getElementById('ftr').innerHTML = alturaFooter('/fr');
+
+  function money(amount, cur){
+    try{return new Intl.NumberFormat(undefined,{style:'currency',currency:cur}).format(amount);}catch(e){return (cur==='EUR'?'€':'$')+amount.toFixed(2)}
+  }
+
+  function render(){
+    const cart = ALTURA.loadCart();
+    const cur = ALTURA.detectCurrency();
+    const wrap = document.getElementById('items');
+    wrap.innerHTML='';
+    if(cart.length===0){ wrap.innerHTML='<div class="small muted">Panier vide</div>'; document.getElementById('total').textContent=money(0,cur); return; }
+    let total=0;
+    cart.forEach((it)=>{
+      const price = (cur==='USD'?it.price_usd:it.price_eur) * (it.qty||1);
+      total += price;
+      const row = document.createElement('div');
+      row.style.display='flex';row.style.justifyContent='space-between';row.style.gap='12px';row.style.padding='10px 0';row.style.borderTop='1px solid rgba(0,0,0,.08)';
+      row.innerHTML = `<div><div style="font-weight:700">${it.name}</div><div class="small muted">${it.size} • Qté ${it.qty||1}</div></div><div style="font-weight:800">${money(price,cur)}</div>`;
+      wrap.appendChild(row);
+    });
+    document.getElementById('total').textContent = money(total,cur);
+  }
+
+  document.getElementById('payStripe').onclick = async ()=>{ alert('Kevin: connecter /api/checkout/stripe puis rediriger.'); };
+  document.getElementById('payPayPal').onclick = async ()=>{ alert('Kevin: connecter /api/checkout/paypal puis rediriger.'); };
+
+  render();
+  document.addEventListener('altura:currency', render);
+  document.addEventListener('altura:cart', render);
+</script>
+</body></html>

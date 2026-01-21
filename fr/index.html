@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ALTURA — Concu pour les silhouettes grandes</title>
+  <meta name="description" content="Chaussures & sacs premium concus pour les personnes grandes. Proportions justes. Inclusif. Paiement securise." />
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/styles.css" />
+</head>
+<body>
+<div id="hdr"></div>
+
+<section class="section">
+  <div class="container">
+    <div class="hero">
+      <img src="/assets/inclusive-models-2.png" alt="ALTURA mannequins grands inclusifs" />
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1 class="h1">Concu pour les silhouettes grandes.</h1>
+          <div class="hero-sub">Chaussures & sacs premium concus pour de vraies proportions — inclusif par nature.</div>
+          <div class="kpi">
+            <span class="pill">Retours offerts</span>
+            <span class="pill">Paiement Stripe + PayPal</span>
+            <span class="pill">Livraison internationale</span>
+          </div>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="/fr/products.html">Acheter Tall Fit</a>
+            <a class="btn btn-ghost" href="/fr/fit.html" style="color:#fff;border-color:rgba(255,255,255,.25)">Voir les tailles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust-strip">
+      <span class="badge">⚡ Message clair en 7s : Tall fit • Premium • Confiance</span>
+      <span class="badge">🔒 Checkout SSL</span>
+      <span class="badge">💬 Support WhatsApp</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="grid grid-2">
+      <a class="card" href="/fr/products.html#women"><img class="card-img" src="/assets/mockups-6.png" alt="Femmes" /><div class="pad"><div class="card-title">Femmes</div><div class="card-sub">Talons, bottes, cabas — proportions tall-fit.</div></div></a>
+      <a class="card" href="/fr/products.html#men"><img class="card-img" src="/assets/ten-products-hero.png" alt="Hommes" /><div class="pad"><div class="card-title">Hommes</div><div class="card-sub">Derbies, mocassins, sacs voyage — lignes allongees.</div></div></a>
+    </div>
+
+    <div style="margin-top:24px" class="notice">
+      <strong>Promesse ALTURA :</strong> formes plus longues, bandoulieres ajustees, anses qui tombent naturellement — pour les grands.
+    </div>
+
+    <div style="margin-top:30px" class="sectionTitle">
+      <div>
+        <h2 class="h2">Meilleures ventes</h2>
+        <p class="p">10 produits de lancement. Tailles visibles. Devises EUR/USD.</p>
+      </div>
+      <a class="btn btn-dark" href="/fr/products.html">Voir tous les produits</a>
+    </div>
+
+    <div class="grid grid-4" style="margin-top:16px">
+      <a class="card" href="/fr/product.html?id=p1"><img class="card-img" src="/assets/p1-p10-grid.png" alt="P1" /><div class="pad"><div class="card-title">Skyline Talon 105</div><div class="card-sub">Talon tall-fit • EU 41–46</div><div class="price" data-price-eur="289" data-price-usd="319">€289</div></div></a>
+      <a class="card" href="/fr/product.html?id=p2"><img class="card-img" src="/assets/p1-p10-grid.png" alt="P2" /><div class="pad"><div class="card-title">Mocassin Stride XL</div><div class="card-sub">Forme allongee • EU 43–50</div><div class="price" data-price-eur="239" data-price-usd="269">€239</div></div></a>
+      <a class="card" href="/fr/product.html?id=p6"><img class="card-img" src="/assets/ten-products-hero.png" alt="P6" /><div class="pad"><div class="card-title">Cabas Vertigo XL</div><div class="card-sub">Anse 28cm</div><div class="price" data-price-eur="249" data-price-usd="279">€249</div></div></a>
+      <a class="card" href="/fr/product.html?id=p8"><img class="card-img" src="/assets/ten-products-hero.png" alt="P8" /><div class="pad"><div class="card-title">Sac Horizon 28L</div><div class="card-sub">Dos allonge • 28L</div><div class="price" data-price-eur="219" data-price-usd="249">€219</div></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="grid grid-2">
+      <div class="card"><div class="pad">
+        <div class="card-title">Pourquoi ca marche</div>
+        <p class="p">La plupart des accessoires sont calibres pour une taille moyenne. ALTURA est concu pour les grands : formes plus longues, points d'appui corrigees, bandoulieres plus longues, anses proportionnees.</p>
+        <div class="sizes">
+          <span class="pill">Modeles inclusifs (Noirs, Blancs, Est-Asiatiques, Arabes, Latinos)</span>
+          <span class="pill">Materiaux premium</span>
+          <span class="pill">Support rapide</span>
+        </div>
+      </div></div>
+      <div class="card"><img class="card-img" src="/assets/inclusive-models-1.png" alt="Modeles inclusifs" /></div>
+    </div>
+  </div>
+</section>
+
+<div id="ftr"></div>
+<script src="/shared/products.js"></script>
+<script src="/shared/partials.js"></script>
+<script src="/shared/app.js"></script>
+<script>
+  document.getElementById('hdr').innerHTML = alturaHeader({langPath:'/fr'});
+  document.getElementById('ftr').innerHTML = alturaFooter('/fr');
+</script>
+</body></html>

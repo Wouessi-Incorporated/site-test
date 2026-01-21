@@ -1,0 +1,11 @@
+﻿# Docker build ignore
+.git
+.gitignore
+.dockerignore
+Dockerfile
+docker-compose.yml
+.qodo
+node_modules
+npm-debug.log
+.DS_Store
+*.md

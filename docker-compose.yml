@@ -1,0 +1,13 @@
+﻿version: '3.8'
+
+services:
+  altura-site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: altura-site
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    environment:
+      - TZ=UTC

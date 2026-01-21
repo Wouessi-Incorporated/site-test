@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ALTURA — Products</title>
+  <meta name="description" content="Shop ALTURA tall-fit shoes and bags for women and men. Sizes visible. EUR/USD." />
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared/styles.css" />
+</head>
+<body>
+<div id="hdr"></div>
+<section class="section">
+  <div class="container">
+    <div class="sectionTitle">
+      <div>
+        <h1 class="h1" style="font-size:44px">Products</h1>
+        <p class="p">Luxury tall-fit shoes & bags. Women • Men • Unisex. Sizes always visible.</p>
+      </div>
+      <a class="btn btn-primary" href="/en/checkout.html">Go to cart</a>
+    </div>
+
+    <div class="notice" style="margin-top:18px"><strong>7-second promise:</strong> Tall-fit proportions. Premium materials. Inclusive. Secure Stripe + PayPal checkout.</div>
+
+    <h2 id="women" class="h2" style="margin-top:28px">Women</h2>
+    <div id="womenGrid" class="grid grid-4" style="margin-top:14px"></div>
+
+    <h2 id="men" class="h2" style="margin-top:34px">Men</h2>
+    <div id="menGrid" class="grid grid-4" style="margin-top:14px"></div>
+
+    <h2 class="h2" style="margin-top:34px">Unisex</h2>
+    <div id="uniGrid" class="grid grid-4" style="margin-top:14px"></div>
+  </div>
+</section>
+<div id="ftr"></div>
+<script src="/shared/products.js"></script>
+<script src="/shared/partials.js"></script>
+<script src="/shared/app.js"></script>
+<script>
+  document.getElementById('hdr').innerHTML = alturaHeader({langPath:'/en'});
+  document.getElementById('ftr').innerHTML = alturaFooter('/en');
+
+  function card(p){
+    const el = document.createElement('a');
+    el.className='card';
+    el.href='/en/product.html?id='+encodeURIComponent(p.id);
+    el.innerHTML = `
+      <img class="card-img" src="${p.image}" alt="${p.name_en}" />
+      <div class="pad">
+        <div class="pill">${p.type==='shoe'?'Shoes':'Bags'}</div>
+        <div class="card-title" style="margin-top:10px">${p.name_en}</div>
+        <div class="card-sub">${p.tag_en} • ${p.sizes_en}</div>
+        <div class="price" data-price-eur="${p.price_eur}" data-price-usd="${p.price_usd}">€${p.price_eur}</div>
+        <div class="small" style="margin-top:8px">${p.gender==='women'?'Women':(p.gender==='men'?'Men':'Unisex')}</div>
+      </div>`;
+    return el;
+  }
+
+  const women = ALTURA_PRODUCTS.filter(p=>p.gender==='women');
+  const men = ALTURA_PRODUCTS.filter(p=>p.gender==='men');
+  const uni = ALTURA_PRODUCTS.filter(p=>p.gender==='unisex');
+
+  women.forEach(p=>document.getElementById('womenGrid').appendChild(card(p)));
+  men.forEach(p=>document.getElementById('menGrid').appendChild(card(p)));
+  uni.forEach(p=>document.getElementById('uniGrid').appendChild(card(p)));
+
+  ALTURA.applyPrices();
+</script>
+</body></html>

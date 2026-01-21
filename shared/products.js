@@ -1,0 +1,13 @@
+window.ALTURA_PRODUCTS = [
+  {id:'p1', name_en:'Skyline Heel 105', name_fr:'Skyline Talon 105', type:'shoe', gender:'women', price_eur:289, price_usd:319, sizes_en:'EU 41–46', sizes_fr:'EU 41–46', image:'/assets/p1-p10-grid.png', tag_en:'Tall-fit heel', tag_fr:'Talon tall-fit'},
+  {id:'p2', name_en:'Stride Loafer XL', name_fr:'Mocassin Stride XL', type:'shoe', gender:'men', price_eur:239, price_usd:269, sizes_en:'EU 43–50', sizes_fr:'EU 43–50', image:'/assets/p1-p10-grid.png', tag_en:'Extra-long last', tag_fr:'Forme allongee'},
+  {id:'p3', name_en:'Apex Sneaker Pro', name_fr:'Baskets Apex Pro', type:'shoe', gender:'unisex', price_eur:199, price_usd:229, sizes_en:'EU 41–50', sizes_fr:'EU 41–50', image:'/assets/p1-p10-grid.png', tag_en:'Everyday luxury', tag_fr:'Luxe quotidien'},
+  {id:'p4', name_en:'Altitude Boot 2.0', name_fr:'Botte Altitude 2.0', type:'shoe', gender:'women', price_eur:329, price_usd:369, sizes_en:'EU 41–46', sizes_fr:'EU 41–46', image:'/assets/p1-p10-grid.png', tag_en:'Calf-proportioned', tag_fr:'Mollet proportionne'},
+  {id:'p5', name_en:'Monolith Derby Tall', name_fr:'Derby Monolith Tall', type:'shoe', gender:'men', price_eur:279, price_usd:309, sizes_en:'EU 43–50', sizes_fr:'EU 43–50', image:'/assets/p1-p10-grid.png', tag_en:'Formal, modern', tag_fr:'Formel, moderne'},
+
+  {id:'p6', name_en:'Vertigo Tote XL', name_fr:'Cabas Vertigo XL', type:'bag', gender:'women', price_eur:249, price_usd:279, sizes_en:'Handle drop 28cm', sizes_fr:'Anse 28cm', image:'/assets/ten-products-hero.png', tag_en:'Tall handle drop', tag_fr:'Anse tall-fit'},
+  {id:'p7', name_en:'Tower Crossbody Long', name_fr:'Crossbody Tower Long', type:'bag', gender:'unisex', price_eur:189, price_usd:209, sizes_en:'Strap 140–165cm', sizes_fr:'Bandouliere 140–165cm', image:'/assets/ten-products-hero.png', tag_en:'Long strap range', tag_fr:'Bandouliere longue'},
+  {id:'p8', name_en:'Horizon Backpack 28L', name_fr:'Sac Horizon 28L', type:'bag', gender:'men', price_eur:219, price_usd:249, sizes_en:'Back length tall', sizes_fr:'Dos tall-fit', image:'/assets/ten-products-hero.png', tag_en:'Tall back panel', tag_fr:'Dos allonge'},
+  {id:'p9', name_en:'Ladder Weekender', name_fr:'Weekender Ladder', type:'bag', gender:'men', price_eur:299, price_usd:339, sizes_en:'Carry-on ready', sizes_fr:'Format cabine', image:'/assets/ten-products-hero.png', tag_en:'Pro travel', tag_fr:'Voyage pro'},
+  {id:'p10', name_en:'Solstice Clutch XL', name_fr:'Pochette Solstice XL', type:'bag', gender:'women', price_eur:159, price_usd:179, sizes_en:'Wrist strap extended', sizes_fr:'Dragonne rallongee', image:'/assets/ten-products-hero.png', tag_en:'Extended proportions', tag_fr:'Proportions etendues'},
+];
