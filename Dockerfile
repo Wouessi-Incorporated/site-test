@@ -4,10 +4,8 @@ workdir /app
 
 copy . .
 
-run npm install -g serve
+run npm init -y && npm install express
 
 expose 8000
 
-healthcheck --interval=30s --timeout=5s --start-period=10s --retries=3 cmd node -e "require('http').get('http://localhost:8000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
-
-cmd ["serve", "-s", ".", "-l", "8000"]
+cmd ["node", "-e", "const express = require('express'); const app = express(); app.use(express.static('.')); app.listen(8000, '0.0.0.0', () => console.log('Server running on 0.0.0.0:8000'));"]
