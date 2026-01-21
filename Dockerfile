@@ -1,9 +1,11 @@
-﻿from python:3.11-alpine
+﻿from node:18-alpine
 
 workdir /app
 
 copy . .
 
+run npm install -g http-server
+
 expose 8000
 
-cmd ["python", "-m", "http.server", "8000", "--directory", "/app"]
+cmd ["http-server", ".", "-p", "8000", "--cors"]
